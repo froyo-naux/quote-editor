@@ -1,0 +1,28 @@
+<%= form_with model: [quote, line_item_date, line_item],
+                    class: "form line-item line-item--form" do |f| %>
+  <%= form_error_notification(line_item) %>
+  <%= f.label :name, "Name", style: "display:none" %>
+  <%= f.text_field :name,
+              class: "line-item__name",
+              autofocus: true %>
+  <%= f.label :quantity, "Quantity", style: "display:none" %>
+  <%= f.number_field :quantity,
+              class: "line-item__quantity",
+              placeholder: "quantity" %>
+  <%= f.label :unit_price, "Unit price", style: "display:none" %>
+  <%= f.number_field :unit_price,
+              class: "line-item__price",
+              placeholder: "unit price",
+              step: "0.01" %>
+  <%= f.text_field :description,
+              class: "line-item__description",
+              placeholder: "description" %>
+  <div class="line-item__actions">
+    <%= link_to "Cancel", quote_path(quote), class: "btn btn--light" %>
+    <% if f.object.new_record? %>
+      <%= f.submit "Create item", class: "btn btn--secondary" %>
+    <% else %>
+      <%= f.submit "Update item", class: "btn btn--secondary" %>
+    <% end %>
+  </div>
+<% end %>

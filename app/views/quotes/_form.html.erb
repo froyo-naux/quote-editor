@@ -1,0 +1,11 @@
+<%= form_with model: quote, class:"form__group" do |f| %>
+  <%= form_error_notification(quote) %>
+  <%= f.label :name, "Name", class: "visually-hidden" %>
+  <%= f.text_field :name, autofocus: true, class: "form__input" %>
+  <%= link_to "Cancel", quotes_path, class: "btn btn_light" %>
+  <% if  f.object.new_record? %>
+    <%= f.submit "Create Quote", class: "btn btn--secondary"  %>
+  <% else %>
+    <%= f.submit "Update quote", class: "btn btn--secondary"  %>
+  <% end %>
+<% end %>

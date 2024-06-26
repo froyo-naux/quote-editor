@@ -1,0 +1,11 @@
+<%= form_with model: [quote, line_item_date], html: { class: "form line-item-date" } do |f| %>
+  <%= form_error_notification(line_item_date) %>
+  <%= f.label :date, "Date", style: "display:none" %>
+  <%= f.date_field :date, html5: true, input_html: { autofocus: true } %>
+  <%= link_to "Cancel", quote_path(quote), class: "btn btn--light" %>
+  <% if  f.object.new_record? %>
+    <%= f.submit "Create date", class: "btn btn--secondary"  %>
+  <% else %>
+    <%= f.submit "Update date", class: "btn btn--secondary"  %>
+  <% end %>
+<% end %>

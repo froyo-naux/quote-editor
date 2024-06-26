@@ -1,0 +1,17 @@
+<header class="navbar">
+  <% if user_signed_in? %>
+    <div class="navbar__brand">
+      <%= current_company.name %>
+    </div>
+    <div class="navbar__name">
+      <%= Current.user.name %>
+    </div>
+    <%= button_to "Sign out",
+                   Current.session, method: :delete,
+                  class: "btn btn--dark" %>
+  <% else %>
+    <%= link_to "Sign in",
+                sign_in_path,
+                class: "btn btn--dark navbar__right" %>
+  <% end %>
+</header>
